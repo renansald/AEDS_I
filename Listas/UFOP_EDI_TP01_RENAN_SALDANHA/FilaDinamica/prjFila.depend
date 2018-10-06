@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1510010299 source:e:\ensino\ufop\disciplinas\edi\implementacao\filadinamica\prjfiladinamica\filadinamica.c
+	"FilaDinamica.h"
+	<stdio.h>
+
+1510010176 e:\ensino\ufop\disciplinas\edi\implementacao\filadinamica\prjfiladinamica\filadinamica.h
+
+1510010311 source:e:\ensino\ufop\disciplinas\edi\implementacao\filadinamica\prjfiladinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+	"FilaDinamica.h"
+
