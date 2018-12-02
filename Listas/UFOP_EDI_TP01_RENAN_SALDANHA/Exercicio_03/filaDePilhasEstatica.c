@@ -43,16 +43,10 @@ void enfileraPilha(tFila *fila, tPilha pilha){
   while(pilha.topo > 0){
     desempilha(&pilha, &aux.c[aux.topo].item);
     aux.topo = aux.topo + 1;
-    //aux.c[aux.topo].item = pilha.c[pilha.topo-1].item;
-     //aux.topo++;
-     //pilha.topo--;
   }
   while(aux.topo != 0){
     empilha(&fila->pilha[fila->tras - 1], aux.c[aux.topo-1].item);
     aux.topo--;
-    //fila->pilha[fila->tras - 1].c[fila->pilha[fila->tras - 1].topo].item = aux.c[aux.topo-1].item;
-    //fila->pilha[fila->tras - 1].topo++;
-    //aux.topo--;
   }
   fila->tras = fila->tras % maxF + 1;
 }
@@ -109,7 +103,7 @@ void imprimeFiladePilha(tFila fila){
   }
   apontador aux = fila.frente;
   int cont = 1;
-  while(aux != (fila.tras)){
+  while(aux != (fila.tras+1)){
     printf("%d Pilha\n", cont);
     imprimePilha(fila.pilha[aux-1]);
     aux = aux % maxF + 1;

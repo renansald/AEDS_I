@@ -26,10 +26,18 @@ void desempilha(tPilha *pilha, tipoItem *x);
 
 void imprimePilha(tPilha pilha);
 
-void verificaNumeroPilha(tPilha, tipoItem x);
+int verificaNumeroPilha(tPilha, tipoItem x);
 
 void cpyPilha(tPilha pilha, tPilha *pilhac);
 
 void concatenaPilha(tPilha pilha1, tPilha pilha2, tPilha *pilha);
 
 void intercalaPilha(tPilha pilha1, tPilha pilha2, tPilha *pilha);
+
+void intersecaoDePilha(tPilha pilha1, tPilha pilha2, tPilha *pilha);
+
+void diferencaPilha(tPilha pilha1, tPilha pilha2, tPilha *pilha);
+
+void pilhaOrdenada(tPilha pilha);
+
+void invertePilha(tPilha *pilha);

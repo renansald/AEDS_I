@@ -45,16 +45,18 @@ void imprimePilha(tPilha pilha){
   }
 }
 
-void verificaNumeroPilha(tPilha pilha, tipoItem x){
+int verificaNumeroPilha(tPilha pilha, tipoItem x){
+  if(ehVazia(pilha)){
+    return 0;
+  }
   apontador aux = pilha.topo->proximo;
   while(aux != NULL){
     if(aux->c.item == x){
-      printf("O item %d pertence a pilha\n", x);
-      return;
+      return 1;
     }
     aux = aux->proximo;
   }
-  printf("O item %d nao pertence a pilha\n", x);
+  return 0;
 }
 
 void cpyPilha(tPilha pilha, tPilha *pilhac){
@@ -112,4 +114,121 @@ void intercalaPilha(tPilha pilha1, tPilha pilha2, tPilha *pilha){
     aux3--;
     aux4--;
   }
+}
+
+void intersecaoDePilha(tPilha pilha1, tPilha pilha2, tPilha *pilha){
+  apontador aux = pilha1.topo;
+  for(int i = 0; i < pilha1.cont; i++){
+    aux = aux->proximo;
+    if((verificaNumeroPilha(pilha2, aux->c.item)) && !(verificaNumeroPilha(*pilha, aux->c.item))){
+      empilha(pilha, aux->c.item);
+    }
+  }
+}
+
+void diferencaPilha(tPilha pilha1, tPilha pilha2, tPilha *pilha){
+  apontador aux = pilha1.topo->proximo;
+  apontador aux2 = pilha2.topo->proximo;
+  int int1 = pilha1.cont;
+  int int2 = pilha2.cont;
+  if(int1 >= int2){
+    while(aux != NULL){
+      if(int1 > int2){
+        empilha(pilha, (aux->c.item));
+        aux = aux->proximo;
+        int1--;
+      }
+      else{
+        empilha(pilha, (aux->c.item - aux2->c.item));
+        aux = aux->proximo;
+        aux2 = aux2->proximo;
+        int2--;
+        int1--;
+      }
+    }
+    invertePilha(pilha);
+  }
+  else{
+    while(aux2 != NULL){
+      if(int2 > int1){
+        empilha(pilha, -(aux2->c.item));
+        aux2 = aux2->proximo;
+        int2--;
+      }
+      else{
+        empilha(pilha, (aux->c.item - aux2->c.item));
+        aux2 = aux2->proximo;
+        aux = aux->proximo;
+        int2--;
+        int1--;
+      }
+    }
+    invertePilha(pilha);
+  }
+}
+
+void pilhaOrdenada(tPilha pilha){
+  apontador aux = pilha.topo->proximo;
+  apontador aux2 = aux->proximo;
+  if((pilha.cont == 0) || (pilha.cont == 1)){
+    printf("ERRO: sua pilha contem apenas um elemento ou esta vazia\n");
+  }
+  else if((aux->c.item > aux2->c.item) && (aux2->proximo == NULL)){
+    printf("Ordenado de forma decrescente\n");
+    return;
+  }
+  else if((aux->c.item < aux2->c.item) && (aux2->proximo == NULL)){
+    printf("Ordenado de forma crescente\n");
+    return;
+  }
+  else if((aux->c.item > aux2->c.item) && (aux2->proximo == NULL)){
+    printf("Seus itens sao iguais\n");
+    return;
+  }
+  if(aux->c.item >= aux2->c.item){
+    while(aux2->proximo != NULL){
+      aux = aux->proximo;
+      aux2 = aux->proximo;
+      if(aux2->c.item > aux->c.item){
+        break;
+      }
+      if(aux2->proximo == NULL){
+        printf("Ordenado de forma decrescente\n");
+        return;
+      }
+    }
+  }
+  if(aux->c.item <= aux2->c.item){
+    while(aux2->proximo != NULL){
+      aux = aux->proximo;
+      aux2 = aux->proximo;
+      if(aux->c.item > aux2->c.item){
+        break;
+      }
+      if(aux2->proximo == NULL){
+        printf("Ordenado de forma crescente\n");
+        return;
+      }
+    }
+  }
+  printf("Seus itens estão desordenados\n");
+}
+
+void invertePilha(tPilha *pilha){
+  if (ehVazia(*pilha)){
+    printf("pilha vazia\n");
+    return;
+  }
+  apontador aux = pilha->topo->proximo;
+  apontador aux2 = aux;
+  apontador t = pilha->topo;
+  while(aux2 != NULL){
+    aux2 = aux->proximo;
+    aux->proximo = t;
+    t = aux;
+    aux = aux2;
+  }
+  pilha->fundo = pilha->topo->proximo;
+  pilha->topo->proximo = t;
+  pilha->fundo->proximo = NULL;
 }

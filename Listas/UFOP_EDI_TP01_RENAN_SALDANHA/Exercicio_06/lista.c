@@ -102,9 +102,6 @@ void listaC(tLista *a, tLista lista){
         aux2 = aux2->proximo;
       }
     }
-    printf("\n\n");
-    printf("primeiro %d\n", aux1->c.item);
-    printf("ultimo %d\n", aux2->c.item);
     add(a, (aux1->c.item + aux2->c.item));
     aux1 = aux1->proximo;
     count--;
