@@ -26,6 +26,9 @@ int main(int argc, char const *argv[]) {
   insercao(&a1, 27);
   insercao(&a1, 13);
   insercao(&a1, 18);
-  verificaSimilaridade(a, a1);
+  if(similaridade(a, a1)==1)
+  printf("Similares\n");
+  else
+  printf("Não são nada\n");
   return 0;
 }

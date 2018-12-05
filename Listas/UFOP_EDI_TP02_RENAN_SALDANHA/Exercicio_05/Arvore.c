@@ -56,18 +56,6 @@ int nNos(No *pRaiz, int n){
   return n;
 }
 
-void verificaSimilaridade(apontador a, apontador a1){
-  if ((nNos(a, 1) != nNos(a1, 1)) && (Profundidade(a, -1) == Profundidade(a1, -1))) {
-    printf("Arvores não similares\n");
-    return;
-  }
-  if(similaridade(a, a1) == 1){
-    printf("São similares\n");
-  }
-  else{
-    printf("Arvores não similares\n");
-  }
-}
 
 int similaridade(apontador a, apontador a1){
   int x;

@@ -18,5 +18,3 @@ int Profundidade(No *pRaiz, int n);
 int nNos(No *pRaiz, int n);
 
 int similaridade(apontador a, apontador a1);
-
-void verificaSimilaridade(apontador a, apontador a1);
