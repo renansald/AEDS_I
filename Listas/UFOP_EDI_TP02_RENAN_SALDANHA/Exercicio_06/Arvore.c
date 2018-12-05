@@ -23,6 +23,23 @@ void insercao(No **pRaiz, int numero2){
   }
 }
 
+void insercaoEspelho(No **pRaiz, int numero2){
+  if (*pRaiz == NULL)	{
+    (*pRaiz)=(apontador)malloc(sizeof (No));
+    (*pRaiz)->esquerda=NULL;
+    (*pRaiz)->direita=NULL;
+    (*pRaiz)->numero=numero2;
+  }
+  else{
+    if (numero2 > ((*pRaiz)->numero)){
+      insercaoEspelho(&((*pRaiz)->esquerda), numero2);
+    }
+    else{
+      insercaoEspelho(&((*pRaiz)->direita), numero2);
+    }
+  }
+}
+
 void exibirEmOrdem(No *pRaiz){
   if(pRaiz != NULL){
     exibirEmOrdem(pRaiz->esquerda);
@@ -86,7 +103,7 @@ int similaridade(apontador a, apontador a1){
   return x;
 }
 
-void verificarEspelho(apontador a, apontador a1){
+/*void verificarEspelho(apontador a, apontador a1){
   if((nNos(a, -1)%2==0) || ((nNos(a1, -1)%2==0))){
     printf("Não são espelho\n");
     return;
@@ -128,19 +145,21 @@ void verificarEspelho(apontador a, apontador a1){
   }
   else
   printf("Não são espelho\n");
-}
+}*/
 
-void espelho(apontador a, int *v, int *x){
-  if((a->esquerda == NULL) && (a->direita == NULL)){
-    v[*x] = a->numero;
-    ++*x;
-    return;
+int espelho(apontador a, apontador a1){
+  int x;
+  if((a->esquerda == NULL) && (a->direita == NULL) && (a1->esquerda == NULL) && (a1->direita == NULL) && (a1->numero == a->numero)){
+    return 1;
   }
-  if(a->esquerda != NULL)
-  espelho(a->esquerda, v, x);
-  if(a->direita != NULL)
-  espelho(a->direita, v, x);
-  v[*x] = a->numero;
-  ++*x;
-  return;
+  else if(((a->esquerda == NULL) && (a1->direita != NULL)) || ((a->esquerda != NULL) && (a1->direita == NULL)) || ((a1->esquerda == NULL) && (a->direita != NULL)) || ((a1->esquerda != NULL) && (a->direita == NULL)) || (a->numero != a1->numero)){
+    return 0;
+  }
+  x = espelho(a->esquerda, a1->direita);
+  if(x == 0)
+  return 0;
+  x = espelho(a->direita, a1->esquerda);
+  if(x == 0)
+  return 0;
+  return x;
 }

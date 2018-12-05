@@ -16,16 +16,20 @@ int main(int argc, char const *argv[]) {
   insercao(&a, 27);
   insercao(&a, 13);
   //insercao(&a, 18);
-  insercao(&a1, 9);
-  insercao(&a1, 4);
-  insercao(&a1, 11);
-  insercao(&a1, 2);
-  insercao(&a1, 5);
-  insercao(&a1, 10);
-  insercao(&a1, 15);
-  insercao(&a1, 27);
-  insercao(&a1, 13);
+  insercaoEspelho(&a1, 9);
+  insercaoEspelho(&a1, 4);
+  insercaoEspelho(&a1, 11);
+  insercaoEspelho(&a1, 2);
+  insercaoEspelho(&a1, 5);
+  insercaoEspelho(&a1, 10);
+  insercaoEspelho(&a1, 15);
+  insercaoEspelho(&a1, 27);
+  insercaoEspelho(&a1, 13);
   //insercao(&a1, 18);
-  verificarEspelho(a, a1);
+  if(espelho(a, a1) == 1){
+    printf("Eh espelho\n");
+  }
+  else
+  printf("Não é espelho\n");
   return 0;
 }

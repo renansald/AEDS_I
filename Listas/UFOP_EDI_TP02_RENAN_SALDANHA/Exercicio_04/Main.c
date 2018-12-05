@@ -20,7 +20,7 @@ int main(int argc, char const *argv[]) {
   exibirEmOrdem(a);
   int no = Profundidade(a, 1);
   printf("\n%d\n", no);
-  if(verificaEstritamenteBinaria(a, Profundidade(a, -1), 1) == 1){
+  if(verificaEstritamenteBinaria(a, no, 1) == 1){
     printf("Arvore Estritamente binaria\n");
   }
   if(verificaCompleta(a, no, 1) == 1){
