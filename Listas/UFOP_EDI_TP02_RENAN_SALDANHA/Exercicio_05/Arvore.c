@@ -31,32 +31,6 @@ void exibirEmOrdem(No *pRaiz){
   }
 }
 
-int Profundidade(No *pRaiz, int n){
-  int k = n;
-  if ((pRaiz->esquerda == NULL) && (pRaiz->direita == NULL))	{
-    return n;
-  }
-  if (pRaiz->esquerda != NULL)
-    n = Profundidade(pRaiz->esquerda, n+1);
-  if (pRaiz->direita != NULL)
-    k = Profundidade(pRaiz->direita, k+1);
-    if(k >= n){
-      return k;
-    }
-    else
-    return n;
-}
-
-int nNos(No *pRaiz, int n){
-  if (pRaiz == NULL)	{
-    return (++n);
-  }
-  n = nNos(pRaiz->esquerda, n);
-  n = nNos(pRaiz->direita, n);
-  return n;
-}
-
-
 int similaridade(apontador a, apontador a1){
   int x;
   if((a->numero != a1->numero) || ((a->direita == NULL) && (a1->direita !=NULL)) || ((a->direita != NULL) && (a1->direita ==NULL)) || ((a->esquerda == NULL) && (a1->esquerda !=NULL)) || (((a->direita != NULL) && (a1->direita ==NULL)))){

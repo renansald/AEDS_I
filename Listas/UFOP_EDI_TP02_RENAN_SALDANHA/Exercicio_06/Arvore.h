@@ -15,14 +15,4 @@ void insercaoEspelho(No **pRaiz, int numero2);
 
 void exibirEmOrdem(No *pRaiz);
 
-int Profundidade(No *pRaiz, int n);
-
-int nNos(No *pRaiz, int n);
-
-int similaridade(apontador a, apontador a1);
-
-void verificaSimilaridade(apontador a, apontador a1);
-
-//void verificarEspelho(apontador a, apontador a1);
-
 int espelho(apontador a, apontador a1);

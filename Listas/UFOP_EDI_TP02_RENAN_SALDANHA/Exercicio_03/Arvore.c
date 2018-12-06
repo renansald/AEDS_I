@@ -54,18 +54,17 @@ int Soma(No *pRaiz, int n){
 }
 
 int Profundidade(No *pRaiz, int n){
-    int k = n;
-    if ((pRaiz->esquerda == NULL) && (pRaiz->direita == NULL))	{
-      return n;
-    }
-    if (pRaiz->esquerda != NULL)
-      n = Profundidade(pRaiz->esquerda, n+1);
-    if (pRaiz->direita != NULL)
-      k = Profundidade(pRaiz->direita, k+1);
-      if(k >= n){
-        return k;
-      }
-      else
-      return n;
+  int k = n;
+  if ((pRaiz->esquerda == NULL) && (pRaiz->direita == NULL))	{
+    return n;
   }
+  if (pRaiz->esquerda != NULL)
+    n = Profundidade(pRaiz->esquerda, n+1);
+  if (pRaiz->direita != NULL)
+    k = Profundidade(pRaiz->direita, k+1);
+    if(k >= n){
+      return k;
+    }
+    else
+    return n;
 }

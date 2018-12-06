@@ -28,7 +28,7 @@ int main(int argc, char const *argv[]) {
   printf("Contei nos");
   soma = Soma(a, 0);
   printf("Somei");
-  altura = Profundidade(a, 0);
-  printf("\n\n%d\n\n%d\n\n%d", nos, soma, altura)
+  altura = Profundidade(a, 1);
+  printf("\n\n%d\n\n%d\n\n%d", nos, soma, altura);
   return 0;
 }
