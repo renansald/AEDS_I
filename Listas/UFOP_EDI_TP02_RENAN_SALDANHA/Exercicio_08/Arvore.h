@@ -11,6 +11,8 @@ void criarArvore(No **pRaiz);
 
 void insercao(No **pRaiz, int numero2);
 
+void exibirEmOrdem(No *pRaiz);
+
 int RemoveElemento(apontador *a, int x);
 
 apontador elementoDireita(apontador a);
