@@ -15,6 +15,6 @@ void exibirEmOrdem(No *pRaiz);
 
 int nNos(No *pRaiz, int n);
 
-int Soma(No *pRaiz, int n);
+int Soma(No *pRaiz);
 
-int Profundidade(No *pRaiz, int n);
+int Profundidade(No *pRaiz);

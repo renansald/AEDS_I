@@ -24,11 +24,11 @@ int main(int argc, char const *argv[]) {
   insercao(&a, 27);
   exibirEmOrdem(a);
   int altura;
-  nos = nNos(a, -1);
+  nos = nNos(a, 0);
   printf("Contei nos");
-  soma = Soma(a, 0);
+  soma = Soma(a);
   printf("Somei");
-  altura = Profundidade(a, 1);
+  altura = Profundidade(a);
   printf("\n\n%d\n\n%d\n\n%d", nos, soma, altura);
   return 0;
 }

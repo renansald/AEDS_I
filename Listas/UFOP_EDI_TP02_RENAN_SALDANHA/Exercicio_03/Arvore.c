@@ -33,38 +33,44 @@ void exibirEmOrdem(No *pRaiz){
 
 int nNos(No *pRaiz, int n){
   if (pRaiz == NULL)	{
-    return (++n);
+    return (n);
   }
-  n = nNos(pRaiz->esquerda, n);
-  n = nNos(pRaiz->direita, n);
+  n++;
+  n = nNos(pRaiz->esquerda, (n));
+  n = nNos(pRaiz->direita, (n));
   return n;
 }
 
-int Soma(No *pRaiz, int n){
+int Profundidade(No *pRaiz){
+  int k = 0;
+  int n = 0;
+  if(pRaiz == NULL){
+    return 0;
+  }
   if ((pRaiz->esquerda == NULL) && (pRaiz->direita == NULL))	{
-    return (n+pRaiz->numero);
-  }
-  if (pRaiz->esquerda != NULL) {
-    n = Soma(pRaiz->esquerda, n);
-  }
-  if(pRaiz->direita != NULL){
-    n = Soma(pRaiz->direita, n);
-  }
-  return (n+pRaiz->numero);
-}
-
-int Profundidade(No *pRaiz, int n){
-  int k = n;
-  if ((pRaiz->esquerda == NULL) && (pRaiz->direita == NULL))	{
-    return n;
+    return 1;
   }
   if (pRaiz->esquerda != NULL)
-    n = Profundidade(pRaiz->esquerda, n+1);
+    n += Profundidade(pRaiz->esquerda);
   if (pRaiz->direita != NULL)
-    k = Profundidade(pRaiz->direita, k+1);
+    k += Profundidade(pRaiz->direita);
     if(k >= n){
-      return k;
+      return k + 1;
     }
     else
-    return n;
+    return n + 1;
+}
+
+int Soma(No *pRaiz){
+  int n = 0;
+  if ((pRaiz->esquerda == NULL) && (pRaiz->direita == NULL))	{
+    return (pRaiz->numero);
+  }
+  if (pRaiz->esquerda != NULL) {
+    n+= Soma(pRaiz->esquerda);
+  }
+  if(pRaiz->direita != NULL){
+    n+= Soma(pRaiz->direita);
+  }
+  return (n+pRaiz->numero);
 }
