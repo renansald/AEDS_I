@@ -24,7 +24,7 @@ int main(int argc, char const *argv[]) {
   insercao(&a, 27);
   exibirEmOrdem(a);
   int altura;
-  nos = nNos(a, 0);
+  nos = nNos(a);
   printf("Contei nos");
   soma = Soma(a);
   printf("Somei");

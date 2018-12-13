@@ -15,10 +15,10 @@ void exibirEmOrdem(No *pRaiz);
 
 int Profundidade(No *pRaiz, int n);
 
-int verificaEstritamenteBinaria(apontador a, int n, int v);
+int verificaEstritamenteBinaria(apontador a);
 
 int nNos(No *pRaiz, int n);
 
-int verificaCompleta(apontador a, int n, int v);
+int verificaCompleta(apontador a, int v);
 
-int verificarCheia(apontador a, int n, int v);
+int verificarCheia(apontador a, int n);

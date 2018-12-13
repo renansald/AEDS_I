@@ -47,19 +47,18 @@ int Profundidade(No *pRaiz, int n){
     return n;
 }
 
-int verificaEstritamenteBinaria(apontador a, int n, int v){
+int verificaEstritamenteBinaria(apontador a){
   int x;
-  int pAtual = v;
   if (((a->esquerda == NULL) && (a->direita != NULL)) || ((a->esquerda != NULL) && (a->direita == NULL))){
     return 0;
   }
   else if((a->esquerda == NULL) && (a->direita == NULL)){
     return 1;
   }
-  x = verificaEstritamenteBinaria(a->esquerda, n, (v+1));
+  x = verificaEstritamenteBinaria(a->esquerda);
   if(x == 0)
   return 0;
-  x = verificaEstritamenteBinaria(a->direita, n, (v+1));
+  x = verificaEstritamenteBinaria(a->direita);
   if(x==0)
   return 0;
 }
@@ -73,33 +72,32 @@ int nNos(No *pRaiz, int n){
   return n;
 }
 
-int verificaCompleta(apontador a, int n, int v){
+int verificaCompleta(apontador a, int v){
   int x, y;
-  int pAtual = v;
-  if (((a->esquerda == NULL) || (a->direita == NULL)) && (pAtual <= n-2)){
+  if (((a->esquerda == NULL) || (a->direita == NULL)) && (v > 2)){
     return 0;
   }
-  if(((a->esquerda == NULL) || (a->direita == NULL)) && (pAtual >= (n-1))){
+  if(((a->esquerda == NULL) || (a->direita == NULL)) && (v <= 2)){
     return 1;
   }
   if(a->esquerda != NULL)
-  x = verificaCompleta(a->esquerda, n, (v+1));
-  y = verificaCompleta(a->direita, n, (v+1));
+  x = verificaCompleta(a->esquerda, (v-1));
+  if(a->direita != NULL)
+  y = verificaCompleta(a->direita, (v-1));
   if((x == 0) || (y == 0)){
     return 0;
   }
   return 1;
 }
 
-int verificarCheia(apontador a, int n, int v){
+int verificarCheia(apontador a, int n){
   int x, y;
-  int pAtual = v;
-  if(((a->esquerda == NULL) || (a->direita == NULL)) && (pAtual != n))
+  if(((a->esquerda == NULL) || (a->direita == NULL)) && (n != 1))
     return 0;
-  else if(((a->esquerda == NULL) || (a->direita == NULL)) && (pAtual == n))
+  else if(((a->esquerda == NULL) || (a->direita == NULL)) && (n == 1))
     return 1;
-    x = verificarCheia(a->esquerda, n, v+1);
-    y = verificarCheia(a->direita, n, v+1);
+    x = verificarCheia(a->esquerda, n-1);
+    y = verificarCheia(a->direita, n-1);
     if((x == 0) || (y == 0)){
       return 0;
     }

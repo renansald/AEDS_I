@@ -13,7 +13,7 @@ void insercao(No **pRaiz, int numero2);
 
 void exibirEmOrdem(No *pRaiz);
 
-int nNos(No *pRaiz, int n);
+int nNos(No *pRaiz);
 
 int Soma(No *pRaiz);
 

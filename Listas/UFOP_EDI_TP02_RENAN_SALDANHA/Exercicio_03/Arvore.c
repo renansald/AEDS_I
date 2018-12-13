@@ -31,13 +31,14 @@ void exibirEmOrdem(No *pRaiz){
   }
 }
 
-int nNos(No *pRaiz, int n){
+int nNos(No *pRaiz){
+  int n = 0;
   if (pRaiz == NULL)	{
     return (n);
   }
   n++;
-  n = nNos(pRaiz->esquerda, (n));
-  n = nNos(pRaiz->direita, (n));
+  n += nNos(pRaiz->esquerda);
+  n += nNos(pRaiz->direita);
   return n;
 }
 
@@ -51,9 +52,9 @@ int Profundidade(No *pRaiz){
     return 1;
   }
   if (pRaiz->esquerda != NULL)
-    n += Profundidade(pRaiz->esquerda);
+    n = Profundidade(pRaiz->esquerda);
   if (pRaiz->direita != NULL)
-    k += Profundidade(pRaiz->direita);
+    k = Profundidade(pRaiz->direita);
     if(k >= n){
       return k + 1;
     }
